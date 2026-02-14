@@ -395,14 +395,14 @@
             .music-toggle { width:44px; height:44px; font-size:18px; right:12px; bottom:12px; }
         }
 
-        /* Background rotating love quotes (left & right) */
+        /* Static combined love quotes, smaller font, fits left and right */
         .bg-quote {
             position: fixed;
             top: 50%;
             transform: translateY(-50%);
             width: clamp(220px, 24vw, 360px);
             pointer-events: none;
-            z-index: 6; /* behind floating hearts (8/30) but above page background */
+            z-index: 6;
             color: rgba(255,255,255,0.95);
             text-shadow: 0 6px 24px rgba(0,0,0,0.45);
             font-family: Georgia, 'Times New Roman', serif;
@@ -411,37 +411,26 @@
             letter-spacing: 0.2px;
         }
 
-        /* align to the centered container which uses 80% width (so container inset is 10%) */
         .bg-quote-left { left: 10%; text-align: left; }
         .bg-quote-right { right: 10%; text-align: right; }
 
         .bg-quote .quote {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             text-align: inherit;
-            opacity: 0;
-            transition: opacity 700ms ease, transform 700ms ease;
-            transform: translateY(6px);
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            color: #e53935; /* red color */
+            opacity: 1;
+            font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+            color: #fff;
             font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
             font-style: italic;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 0.5px;
-            text-shadow: 0 4px 18px rgba(229,57,53,0.13), 0 1px 0 #fff;
-            background: none;
-            padding: 18px 16px;
-            border-radius: 12px;
+            background: rgba(35,35,38,0.7);
+            padding: 16px 14px;
+            border-radius: 14px;
             max-width: 100%;
-            min-height: clamp(140px, 28vh, 340px);
-            box-shadow: none;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.18);
-        }
-
-        .bg-quote .quote.show {
-            opacity: 1;
-            transform: translateY(0);
+            min-height: 340px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+            text-shadow: 0 2px 12px rgba(229,57,53,0.10);
         }
 
         @media (max-width: 700px) {
@@ -459,7 +448,7 @@
     <div class="container">
         <div class="header">
             <h1><span class="heart">❤️</span> HANA + MUSIE <span class="heart">❤️</span></h1>
-            <p>A journey of memories together</p>
+            <p>A journey of memories together from Jan 25 2015</p>
             <div class="flowers" aria-hidden="true">
                 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
                     <defs>
@@ -791,93 +780,17 @@
         });
     </script>
     <script>
-        // Rotating background love quotes (left + right) — changes every 5s
-        (function(){
+        // Static, different, longer, emotional love stories for left and right quotes, black font
+        document.addEventListener('DOMContentLoaded', () => {
             const leftEl = document.getElementById('bg-left-quote');
             const rightEl = document.getElementById('bg-right-quote');
-            const intervalMs = 8000; // show each quote for 8 seconds
-
-            const leftQuotes = [
-                "Thank you for staying when the days were heavy; your hand kept me steady.",
-                "You loved me in my unpolished hours — that love is everything.",
-                "In stormy nights you were my shelter; in quiet mornings my sunrise.",
-                "For every mistake I made, you made a home of forgiveness.",
-                "You stayed — and that is the bravest, kindest thing I've ever known.",
-                "You see the best in me even when I can't see it myself.",
-                "Your patience taught me how to be better, softer, braver.",
-                "When life felt heavy, you carried pieces of it with me.",
-                "Your laughter is the compass that points my day toward joy.",
-                "Sticking by me made our 'us' stronger than any storm."
-            ];
-
-            const rightQuotes = [
-                "I notice how you show up: small mercies, loud loyalty, endless care.",
-                "Because you stayed, the hardest parts became ours to share and to soften.",
-                "Your courage is the quiet kind — the kind that holds and heals.",
-                "If love is a long road, thank you for walking every mile with me.",
-                "You are my reason to keep trying, and my favorite safe place.",
-                "You make ordinary days feel like a gift.",
-                "Thank you for believing in us, even when I doubted.",
-                "You turn my fractures into mosaic pieces of beauty.",
-                "With you beside me, hard days find a softer ending.",
-                "Your steady love taught me how to stay."
-            ];
-
-            // short poems (a few lines each) to add variety
-            const poemsLeft = [
-                "You stayed when worlds unraveled\nand made our pieces glow again.",
-                "When my voice was a whisper\nyou answered with patience and courage.",
-                "You held my trembling hands\nand turned my fears to promises."
-            ];
-
-            const poemsRight = [
-                "Through worn shoes and heavy rains\nyou were the steady map to home.",
-                "The nights were long but your light\nkept time in another, kinder rhythm.",
-                "We stitched the quiet hours together\nand learned how to keep each other safe."
-            ];
-
-            // merge arrays to have variety
-            const leftPool = leftQuotes.concat(poemsLeft);
-            const rightPool = rightQuotes.concat(poemsRight);
-
-            let leftIndex = 0, rightIndex = 0;
-
-            function show(el, text) {
-                if(!el) return;
-                // fade out
-                el.classList.remove('show');
-                setTimeout(() => {
-                    el.innerHTML = text.replace(/\n/g, '<br>');
-                    el.classList.add('show');
-                }, 220);
-            }
-
-            let showLeft = true;
-            function step() {
-                if (showLeft) {
-                    show(leftEl, leftPool[leftIndex % leftPool.length]);
-                    leftEl.style.visibility = 'visible';
-                    rightEl.classList.remove('show');
-                    rightEl.style.visibility = 'hidden';
-                    leftIndex++;
-                } else {
-                    show(rightEl, rightPool[rightIndex % rightPool.length]);
-                    rightEl.style.visibility = 'visible';
-                    leftEl.classList.remove('show');
-                    leftEl.style.visibility = 'hidden';
-                    rightIndex++;
-                }
-                showLeft = !showLeft;
-            }
-
-            // initial show after DOM ready
-            document.addEventListener('DOMContentLoaded', () => {
-                leftEl.style.visibility = 'visible';
-                rightEl.style.visibility = 'hidden';
-                step();
-                setInterval(step, intervalMs);
-            });
-        })();
+            const leftQuote = `From the moment our eyes met, my world shifted. I never believed in fate until I found you, the missing piece I never knew I needed. Through every challenge, your love has been my anchor, your laughter my favorite song. You are the gentle hand that steadies me, the light that guides me home. I am endlessly grateful for every sunrise I get to share with you.`;
+            const rightQuote = `Ours is a story written in the quiet moments: the way you hold my hand when words fall short, the warmth of your embrace after a long day, the dreams we whisper in the dark. With you, I have learned that love is not just grand gestures, but the everyday kindness, the patience, the forgiveness. Thank you for being my best friend, my heart’s home, my forever. I love you more deeply with every day.`;
+            if (leftEl) leftEl.innerHTML = leftQuote;
+            if (rightEl) rightEl.innerHTML = rightQuote;
+            leftEl.style.visibility = 'visible';
+            rightEl.style.visibility = 'visible';
+        });
     </script>
     <audio id="bg-music" src="audio/shikor.mp3" loop preload="auto"></audio>
     <button id="music-toggle" class="music-toggle" aria-label="Play music">♪</button>
