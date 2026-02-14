@@ -26,9 +26,9 @@
 
         .container {
             max-width: 1200px;
-            width: 80%; /* occupy 80% of the viewport horizontally */
-            height: 100vh; /* full viewport vertically */
-            margin: 0 auto; /* center horizontally */
+            width: 80%;
+            height: 100vh;
+            margin: 0 auto;
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -63,7 +63,7 @@
         .slider-container {
             position: relative;
             width: 65%;
-            flex: 1;
+            flex: 1 1 0;
             margin: 20px auto;
             background: #f0f0f0;
             display: flex;
@@ -72,6 +72,8 @@
             justify-content: flex-start;
             overflow: hidden;
             border-radius: 14px;
+            height: auto;
+            min-height: 0;
         }
 
         .slide {
@@ -112,12 +114,14 @@
         }
 
         .caption .title {
+            font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
             font-weight: 800;
             font-size: 1.13rem;
-            color: #111;
+            color: #b30000;
             padding-left: 12px;
-            letter-spacing: 0.4px;
+            letter-spacing: 1.2px;
             text-shadow: 0 3px 14px rgba(229,57,53,0.08);
+            font-style: italic;
         }
 
         @keyframes gradientShift {
@@ -142,9 +146,10 @@
         /* photo frame removed */
 
         .slide img {
-            width: auto;
-            height: 100%;
-            object-fit: cover;
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
             display: block;
             margin: 0 auto;
         }
@@ -352,7 +357,7 @@
             .slider-container {
                 /* on small screens use full width and shorter height */
                 width: 96%;
-                height: 40vh;
+                height: 90vh;
             }
 
             .content {
@@ -437,17 +442,23 @@
             .bg-quote {
                 display: none !important;
             }
+            .container {
+                width: 100% !important;
+                height: 100vh !important;
+                border-radius: 0 !important;
+            }
             .slider-container {
                 width: 100% !important;
-                height: 40vh !important;
-                min-height: 220px;
-                margin: 8px auto;
+                flex: 1 1 0 !important;
+                height: auto !important;
+                min-height: 0 !important;
+                margin: 0 auto;
             }
             .slide img {
                 width: 100% !important;
                 height: auto !important;
+                max-height: 100% !important;
                 object-fit: contain !important;
-                max-height: 36vh;
             }
             .slider-controls button {
                 width: 36px !important;
@@ -459,16 +470,18 @@
                 gap: 6px !important;
                 bottom: 8px !important;
             }
+            .footer {
+                position: fixed !important;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: transparent;
+                z-index: 100;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="bg-quote bg-quote-left" aria-hidden="true">
-        <div class="quote" id="bg-left-quote"></div>
-    </div>
-    <div class="bg-quote bg-quote-right" aria-hidden="true">
-        <div class="quote" id="bg-right-quote"></div>
-    </div>
     <div class="container">
         <div class="header">
             <h1><span class="heart">❤️</span> HANA + MUSIE <span class="heart">❤️</span></h1>
@@ -608,51 +621,51 @@
 'it was friday the 25th, and it was the best day of his life',
 'From that day on, they started dating and creating beautiful memories together',
 'The rest is history, filled with love, laughter, and countless adventures that they cherish to this day',
-'Happy Valentine\'s Day, my love! Here\'s to many more years of happiness together! <3',
+'Happy Valentine\'s Day, my love! Here\'s to many more years of happiness together!  ',
 'I love you, my love. You are my everything.', 
-'I will love you forever and always, no matter what. You are my soulmate, my best friend, and the love of my life. <3',
-'You make every day brighter and more beautiful just by being in it. I am so grateful to have you by my side. Happy Valentine\'s Day, my love! <3',
-'Every moment with you is a treasure, and I look forward to creating many more unforgettable memories together. I love you more than words can express. Happy Valentine\'s Day! <3',
-'You are the reason for my smile, the beat in my heart, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'I am so grateful for your love and support, and I promise to always cherish and adore you. Happy Valentine\'s Day, my love! <3',
-'You are my sunshine on a cloudy day, my rock in times of trouble, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'Thank you for being the most amazing partner and for filling my life with love and happiness. Happy Valentine\'s Day, my love! <3',
-'You are the love of my life, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'love you to the moon and back, and I can\'t wait to spend many more Valentine\'s Days with you. Happy Valentine\'s Day, my love! <3',
-'You are my forever Valentine, and I am so lucky to have you in my life. Happy Valentine\'s Day, my love! <3',
-'I am so grateful for every moment we share together, and I look forward to creating many more beautiful memories with you. Happy Valentine\'s Day, my love! <3',
-'You are the most wonderful person I have ever met, and I am so lucky to call you my Valentine. Happy Valentine\'s Day, my love! <3',
-'I love you more than words can express, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'You are my heart, my soul, and my everything. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'Thank you for being the most amazing partner and for filling my life with love and happiness. Happy Valentine\'s Day, my love! <3',
-'You are the love of        my life, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'I will love you forever and always, no matter what. You are my soulmate, my best friend, and the love of my life. <3',
-'You make every day brighter and more beautiful just by being in it. I am so grateful to have you by my side. Happy Valentine\'s Day, my love! <3',
-'Every moment with you is a treasure, and I look forward to creating many more unforgettable memories together. I love you more than words can express. Happy Valentine\'s Day! <3',
-'You are the reason for my smile, the beat in my heart, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'I am so grateful for your love and support, and I promise to always cherish and adore you. Happy Valentine\'s Day, my love! <3',
-'You are my sunshine on a cloudy day, my rock in times of trouble, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love! <3',    
-'Thank you for being the most amazing partner and for filling my life with love and happiness. Happy Valentine\'s Day, my love! <3',
-'You are the love of my life, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'love you to the moon and back, and I can\'t wait to spend many more Valentine\'s Days with you. Happy Valentine\'s Day, my love! <3',
-'You are my forever Valentine, and I am so lucky to have you in my life. Happy Valentine\'s Day, my love! <3',
-'I am so grateful for every moment we share together, and I look forward to creating many more beautiful memories with you. Happy Valentine\'s Day, my love! <3',
-'You are the most wonderful person I have ever met, and I am so lucky to call you my Valentine. Happy Valentine\'s Day, my love! <3',
-'I love you more than words can express, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'You are my heart, my soul, and my everything. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'Thank you for being the most amazing partner and for filling my life with love and happiness. Happy Valentine\'s Day, my love! <3',
-'You are the love of        my life, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'I will love you forever and always, no matter what. You are my soulmate, my best friend, and the love of my life. <3',
-'You make every day brighter and more beautiful just by being in it. I am so grateful to have you by my side. Happy Valentine\'s Day, my love! <3',
-'Every moment with you is a treasure, and I look forward to creating many more unforgettable memories together. I love you more than words can express. Happy Valentine\'s Day! <3',
-'You are the reason for my smile, the beat in my heart, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'I am so grateful for your love and support, and I promise to always cherish and adore you. Happy Valentine\'s Day, my love! <3',
-'You are my sunshine on a cloudy day, my rock in times of trouble, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'Thank you for being the most amazing partner and for filling my life with love and happiness. Happy Valentine\'s Day, my love! <3',
-'You are the love of my life, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love! <3',
-'love you to the moon and back, and I can\'t wait to spend many more Valentine\'s Days with you. Happy Valentine\'s Day, my love! <3',
-'You are my forever Valentine, and I am so lucky to have you in my life. Happy Valentine\'s Day, my love! <3',
-'I am so grateful for every moment we share together, and I look forward to creating many more beautiful memories with you. Happy Valentine\'s Day, my love! <3'
+'I will love you forever and always, no matter what. You are my soulmate, my best friend, and the love of my life.  ',
+'You make every day brighter and more beautiful just by being in it. I am so grateful to have you by my side. Happy Valentine\'s Day, my love!  ',
+'Every moment with you is a treasure, and I look forward to creating many more unforgettable memories together. I love you more than words can express. Happy Valentine\'s Day!  ',
+'You are the reason for my smile, the beat in my heart, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'I am so grateful for your love and support, and I promise to always cherish and adore you. Happy Valentine\'s Day, my love!  ',
+'You are my sunshine on a cloudy day, my rock in times of trouble, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'Thank you for being the most amazing partner and for filling my life with love and happiness. Happy Valentine\'s Day, my love!  ',
+'You are the love of my life, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'love you to the moon and back, and I can\'t wait to spend many more Valentine\'s Days with you. Happy Valentine\'s Day, my love!  ',
+'You are my forever Valentine, and I am so lucky to have you in my life. Happy Valentine\'s Day, my love!  ',
+'I am so grateful for every moment we share together, and I look forward to creating many more beautiful memories with you. Happy Valentine\'s Day, my love!  ',
+'You are the most wonderful person I have ever met, and I am so lucky to call you my Valentine. Happy Valentine\'s Day, my love!  ',
+'I love you more than words can express, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'You are my heart, my soul, and my everything. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'Thank you for being the most amazing partner and for filling my life with love and happiness. Happy Valentine\'s Day, my love!  ',
+'You are the love of        my life, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'I will love you forever and always, no matter what. You are my soulmate, my best friend, and the love of my life.  ',
+'You make every day brighter and more beautiful just by being in it. I am so grateful to have you by my side. Happy Valentine\'s Day, my love!  ',
+'Every moment with you is a treasure, and I look forward to creating many more unforgettable memories together. I love you more than words can express. Happy Valentine\'s Day!  ',
+'You are the reason for my smile, the beat in my heart, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'I am so grateful for your love and support, and I promise to always cherish and adore you. Happy Valentine\'s Day, my love!  ',
+'You are my sunshine on a cloudy day, my rock in times of trouble, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love!  ',    
+'Thank you for being the most amazing partner and for filling my life with love and happiness. Happy Valentine\'s Day, my love!  ',
+'You are the love of my life, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'love you to the moon and back, and I can\'t wait to spend many more Valentine\'s Days with you. Happy Valentine\'s Day, my love!  ',
+'You are my forever Valentine, and I am so lucky to have you in my life. Happy Valentine\'s Day, my love!  ',
+'I am so grateful for every moment we share together, and I look forward to creating many more beautiful memories with you. Happy Valentine\'s Day, my love!  ',
+'You are the most wonderful person I have ever met, and I am so lucky to call you my Valentine. Happy Valentine\'s Day, my love!  ',
+'I love you more than words can express, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'You are my heart, my soul, and my everything. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'Thank you for being the most amazing partner and for filling my life with love and happiness. Happy Valentine\'s Day, my love!  ',
+'You are the love of        my life, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'I will love you forever and always, no matter what. You are my soulmate, my best friend, and the love of my life.  ',
+'You make every day brighter and more beautiful just by being in it. I am so grateful to have you by my side. Happy Valentine\'s Day, my love!  ',
+'Every moment with you is a treasure, and I look forward to creating many more unforgettable memories together. I love you more than words can express. Happy Valentine\'s Day!  ',
+'You are the reason for my smile, the beat in my heart, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'I am so grateful for your love and support, and I promise to always cherish and adore you. Happy Valentine\'s Day, my love!  ',
+'You are my sunshine on a cloudy day, my rock in times of trouble, and the love of my life. I am so lucky to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'Thank you for being the most amazing partner and for filling my life with love and happiness. Happy Valentine\'s Day, my love!  ',
+'You are the love of my life, and I am so grateful to have you as my Valentine. Happy Valentine\'s Day, my love!  ',
+'love you to the moon and back, and I can\'t wait to spend many more Valentine\'s Days with you. Happy Valentine\'s Day, my love!  ',
+'You are my forever Valentine, and I am so lucky to have you in my life. Happy Valentine\'s Day, my love!  ',
+'I am so grateful for every moment we share together, and I look forward to creating many more beautiful memories with you. Happy Valentine\'s Day, my love!  '
 
 ];
 
