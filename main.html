@@ -434,11 +434,17 @@
         }
 
         @media (max-width: 700px) {
-            .bg-quote { display: none; }
+            .slider-container {
+                width: 100% !important;
+                height: 40vh !important;
+                min-height: 220px;
+                margin: 8px auto;
+            }
             .slide img {
-                width: 100%;
-                height: auto;
-                object-fit: contain;
+                width: 100% !important;
+                height: auto !important;
+                object-fit: contain !important;
+                max-height: 36vh;
             }
         }
     </style>
